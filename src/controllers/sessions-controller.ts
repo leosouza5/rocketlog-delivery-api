@@ -9,6 +9,7 @@ import { sign, Secret, SignOptions } from "jsonwebtoken";
 class SessionsController {
   async create(req: Request, res: Response, next: NextFunction) {
     try {
+
       const bodySchema = z.object({
         email: z.string().email(),
         password: z.string().min(6),
