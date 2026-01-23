@@ -17,6 +17,9 @@ export class DeliveryLogsController {
     if (!delivery) {
       throw new AppError("Delivery Not Found", 404)
     }
+    if (delivery.status == "delivered") {
+      throw new AppError("This order has already been delivered")
+    }
 
     if (delivery.status == "processing") {
       throw new AppError("Change status to shipped first")
